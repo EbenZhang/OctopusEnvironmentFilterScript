@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       OctopusEnvFilter
 // @namespace  https://github.com/EbenZhang/OctopusEnvironmentFilterScript
-// @version    0.4
+// @version    0.5
 // @description  Improve Octopus UI rendering performance by filtering the environments to display
 // @include /https?://.*/app.*/
 // @license MIT
@@ -149,6 +149,7 @@
         if (this.readyState !== 4) {
             return;
         }
+        if(!response.target.responseText) return; // octopus web site is a single page app, empty string when navigating inside
         var newResp = undefined;
         if (isProjectOverviewPage() && isProjectResponse(this.responseURL)) {
             newResp = modifyResponseForProjectOverviewPage(response.target.responseText);
