@@ -10,6 +10,7 @@
 // @grant GM_setValue
 // @grant GM_addStyle
 // @grant GM_registerMenuCommand
+// @license MIT
 // ==/UserScript==
 
 /* 
