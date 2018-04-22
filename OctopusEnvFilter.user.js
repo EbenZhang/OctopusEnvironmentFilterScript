@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name       OctopusEnvFilter
-// @licence https://github.com/EbenZhang/OctopusEnvironmentFilterScript/blob/master/LICENSE
+// @licence MIT
 // @namespace  https://github.com/EbenZhang/OctopusEnvironmentFilterScript
 // @version    0.1
 // @description  GreaseMonkey script to improve Octopus UI rendering performance by filtering the environments
