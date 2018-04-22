@@ -5,8 +5,14 @@
 // @description  GreaseMonkey script to improve Octopus UI rendering performance by filtering the environments
 // @include /https?://.*/app.*/
 // @copyright  2018+, EbenZhang
-// @require        https://raw.githubusercontent.com/fichtennadel/MonkeyConfig/0eaeb525733a36d9e721ec4d9cf3b744b527bfcf/monkeyconfig.js
+// @require            https://openuserjs.org/src/libs/sizzle/GM_config.js
+// @grant GM_getValue
+// @grant GM_setValue
+// @grant GM_addStyle
+// @grant GM_registerMenuCommand
 // ==/UserScript==
+
+/* 
 var octopusEnvFilterCfg = new MonkeyConfig({
     title: 'OctopusEnvFilter Configuration',
     menuCommand: true,
@@ -24,9 +30,47 @@ var octopusEnvFilterCfg = new MonkeyConfig({
             default: ""
         }
     }
-});
+}); */
 
+'use strict';
 (function () {
+    const env_config_key = "environments";
+    const configId = "OctopusEnvFilterConfig";
+    const env_config_elementId = configId + "_field_" + env_config_key;
+    var cfg = new GM_configStruct(
+        {
+            id: configId,
+            fields:
+                {
+                    "environments":
+                        {
+                            label: "Display only environments matches these regular expressions:",
+                            type: 'text',
+                            default: ''
+                        }
+                },
+            css: "#" + env_config_elementId + "{ Width : 80em; } .config_var {margin-top: 10px !important;} .field_label {font-weight: inherit !important;font-size: 14px !important;}",
+            events: {
+                open: function (doc) {
+                    var config = this;
+                    var envElement = doc.getElementById(env_config_elementId);
+
+                    envElement.placeholder = "regex, separate by comma, e.g.: Production.*, Staging.*";
+                }
+            },
+            title: "Octopus Environment Filtering Configuration"
+        });
+
+    GM_registerMenuCommand('Configure Octopus Environment Filtering!', function () {
+        cfg.open();
+    });
+
+
+    try {
+        cfg.get(env_config_key);
+    } catch (error) {
+        cfg.set(env_config_key, "");
+    }
 
     function isProjectOverviewPage() {
         return window.location.href.match(/https?:\/\/.*\/app#\/projects\/.*\/overview\/?/i)
@@ -49,7 +93,7 @@ var octopusEnvFilterCfg = new MonkeyConfig({
     }
 
     function getEnvRegexes() {
-        var envsRegexStr = cfg.get("environments");
+        var envsRegexStr = cfg.get(env_config_key);
         var envRegexes = envsRegexStr.split(',').map(function (x) { return new RegExp(x, "i"); });
         return envRegexes;
     }
@@ -117,9 +161,11 @@ var octopusEnvFilterCfg = new MonkeyConfig({
         return resp;
     }
 
-    var cfg = octopusEnvFilterCfg;
 
     function modifyResponse(response) {
+        if (!cfg.get(env_config_key)) {
+            return;
+        }
         if (this.readyState !== 4) {
             return;
         }
