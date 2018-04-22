@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       OctopusEnvFilter
 // @namespace  https://github.com/EbenZhang/OctopusEnvironmentFilterScript
-// @version    0.1
+// @version    0.2
 // @description  GreaseMonkey script to improve Octopus UI rendering performance by filtering the environments
 // @include /https?://.*/app.*/
 // @license MIT
@@ -29,13 +29,13 @@
                             default: ''
                         }
                 },
-            css: "#" + env_config_elementId + "{ Width : 80em; } .config_var {margin-top: 10px !important;} .field_label {font-weight: inherit !important;font-size: 14px !important;}",
+            css: "#" + env_config_elementId + "{ Width : 60em; } .config_var {margin-top: 10px !important;} .field_label {font-weight: inherit !important;font-size: 14px !important;}",
             events: {
                 open: function (doc) {
                     var config = this;
                     var envElement = doc.getElementById(env_config_elementId);
 
-                    envElement.placeholder = "regex, separate by comma, e.g.: Production.*, Staging.*";
+                    envElement.placeholder = "regex, separate by comma, e.g.: Production.*,Staging.*";
                 }
             },
             title: "Octopus Environment Filtering Configuration"
