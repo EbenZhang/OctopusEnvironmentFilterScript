@@ -35,7 +35,7 @@
                     var config = this;
                     var envElement = doc.getElementById(env_config_elementId);
 
-                    envElement.placeholder = "regex, separate by comma, e.g.: Production.*,Staging.*";
+                    envElement.placeholder = "regular expressions, separate by comma, e.g.: Production.*,Staging.*";
                 }
             },
             title: "Octopus Environment Filtering Configuration"
