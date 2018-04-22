@@ -2,7 +2,7 @@
 // @name       OctopusEnvFilter
 // @namespace  https://github.com/EbenZhang/OctopusEnvironmentFilterScript
 // @version    0.2
-// @description  GreaseMonkey script to improve Octopus UI rendering performance by filtering the environments
+// @description  Improve Octopus UI rendering performance by filtering the environments to display
 // @include /https?://.*/app.*/
 // @license MIT
 // @require            https://openuserjs.org/src/libs/sizzle/GM_config.js
