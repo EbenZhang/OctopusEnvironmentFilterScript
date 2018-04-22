@@ -12,26 +12,6 @@
 // @grant GM_registerMenuCommand
 // ==/UserScript==
 
-/* 
-var octopusEnvFilterCfg = new MonkeyConfig({
-    title: 'OctopusEnvFilter Configuration',
-    menuCommand: true,
-    params: {
-        environments: {
-            type: 'custom',
-            html: '<input type="text" style="width: 80em;" placeholder="regex, separate by comma" />',
-            set: function (value, parent) {
-                parent.querySelectorAll('input')[0].value = value;
-            },
-            get: function (parent) {
-                return parent.querySelectorAll('input')[0].value
-            },
-            label: "Display only these environments",
-            default: ""
-        }
-    }
-}); */
-
 'use strict';
 (function () {
     const env_config_key = "environments";
