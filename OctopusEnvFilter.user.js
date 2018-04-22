@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name       OctopusEnvFilter
 // @namespace  https://github.com/EbenZhang/OctopusEnvironmentFilterScript
-// @version    0.2
+// @version    0.3
 // @description  Improve Octopus UI rendering performance by filtering the environments to display
 // @include /https?://.*/app.*/
 // @license MIT
+// @require            https://openuserjs.org/src/libs/sizzle/gm4-polyfill.js
 // @require            https://openuserjs.org/src/libs/sizzle/GM_config.js
 // @grant GM_getValue
 // @grant GM_setValue
