@@ -53,23 +53,23 @@
     }
 
     function isProjectOverviewPage() {
-        return window.location.href.match(/https?:\/\/.*\/app#\/projects\/.*\/overview\/?/i)
+        return window.location.href.match(/https?:\/\/.*\/app#\/Spaces\-\d+\/projects\/.*\/deployments\/?/i)
     }
 
     function isProjectResponse(respUrl) {
-        return respUrl.match(/https?:\/\/.*\/api\/progression\/Projects-\/?/i)
+        return respUrl.match(/https?:\/\/.*\/api\/Spaces\-\d+\/progression\/Projects-\/?/i)
     }
 
     function isEnvironmentPage() {
-        return window.location.href.match(/https?:\/\/.*\/app#\/infrastructure\/environments/);
+        return window.location.href.match(/https?:\/\/.*\/app#\/Spaces\-\d+\/infrastructure\/environments/);
     }
 
     function isEnvironmentPageResponse(respUrl) {
-        return respUrl.match(/https?:\/\/.*\/api\/environments\/all\/?/i);
+        return respUrl.match(/https?:\/\/.*\/api\/Spaces\-\d+\/environments\/all\/?/i);
     }
 
     function isEnvironmentPageSummaryResponse(respUrl) {
-        return respUrl.match(/https?:\/\/.*\/api\/environments\/summary\/?/i);
+        return respUrl.match(/https?:\/\/.*\/api\/Spaces\-\d+\/environments\/summary\/?/i);
     }
 
     function getEnvRegexes() {
