@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       OctopusEnvFilter
 // @namespace  https://github.com/EbenZhang/OctopusEnvironmentFilterScript
-// @version    0.5
+// @version    0.6
 // @description  Improve Octopus UI rendering performance by filtering the environments to display
 // @include /https?://.*/app.*/
 // @license MIT
